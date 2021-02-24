@@ -1,0 +1,32 @@
+
+<div class="uk-container">
+<div class="uk-card uk-card-body">
+  <div class="uk-placeholder uk-text-center">
+    <span uk-icon="icon: cloud-upload"></span>
+    <span class="uk-text-middle"> Upload files</span>
+
+    <div uk-form-custom>
+      <input type="file" (change)="selectFile($event)" multiple>
+      <button class="uk-button uk-button-default" type="button" tabindex="-1">Select a file</button>
+    </div>
+
+    <button class="uk-button uk-button-primary" [disabled]="!selected" (click)="upload()">Upload</button>
+  </div>
+  
+  <progress style="display: block !important;" id="js-progressbar" [ngClass]="status" [value]="progress.percentage" class="uk-progress" value="{{ progress.percentage }}" max="100" hidden></progress>
+</div>
+
+<section class="hero" *ngIf="!!uploadedFiles">
+  <div class="hero-body">
+    <div class="container">
+      <h4 class="uk-text-primary">Uploaded files</h4>
+      <div class="content">
+        <ul>
+          <li *ngFor="let file of uploadedFiles">{{ file }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
